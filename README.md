@@ -10,8 +10,17 @@ Para rodar o desafio-2, entre na pasta e rode o comando:
   pip install -r requirements.txt  
 ```
 
+Em seguida, rode esse comando:
+```
+  python manage.py migrate
+```
+
 depois rode:
 
 ```
-python manage.py runserver
+python manage.py runserver 8000
 ```
+
+E o server vai estar rodando em http://localhost:8000/
+
+
