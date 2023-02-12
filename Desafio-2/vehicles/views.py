@@ -3,27 +3,41 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from django.template import loader
 from .models import Choice, Question
 from django.shortcuts import get_object_or_404
 
+from django.views import generic
 
-def index(request):
-  latest_question_list = Question.objects.order_by('-pub_date')[:5]
-  context = {'latest_question_list': latest_question_list}
-  return render(request, 'vehicles/index.html', context)
+class IndexView(generic.ListView):
+  template_name = 'vehicles/index.html'
+  context_object_name = 'latest_question_list'
+
+  def get_queryset(self):
+    """Return the last five published questions."""
+    return Question.objects.order_by('-pub_date')[:5]
+
+class DetailView(generic.DetailView):
+  model = Question
+  template_name = 'vehicles/detail.html'
+
+class ResultView(generic.DetailView):
+  model = Question
+  template_name = 'vehicles/detail.html'
+
+# def detail(request, question_id):
+#     question = get_object_or_404(Question, pk=question_id)
+#     return render(request, 'polls/detail.html', {'question': question})
+
+# def index(request):
+#   latest_question_list = Question.objects.order_by('-pub_date')[:5]
+#   context = {'latest_question_list': latest_question_list}
+#   return render(request, 'vehicles/index.html', context)
 
 def detail(request, question_id):
-  # try:
-  #   question = Question.objects.get(pk=question_id)
-  # except:
-  #   raise Http404("Question does not exists")
-
   question = get_object_or_404(Question, pk=question_id)
-  
   return render(request, 'vehicles/detail.html', {'question': question})
 
 def results(request, question_id):
