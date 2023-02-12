@@ -1,0 +1,25 @@
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/vehicles/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<style>
+  ul{
+    margin-top: 10px;
+  }
+  li{
+    background-color: rgb(255, 133, 133);
+    padding: 10px 20px ;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  a{
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>
