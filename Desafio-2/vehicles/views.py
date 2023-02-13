@@ -9,6 +9,8 @@ from django.urls import reverse
 from .models import User, Vehicle
 from django.shortcuts import get_object_or_404
 
+from django.shortcuts import redirect
+
 
 def index(request):
   vehicles_all = Vehicle.objects.all()
@@ -16,13 +18,16 @@ def index(request):
   return render(request, 'vehicles/index.html', context)
 
 def searchVehicle(request):
-  try:
-    user = get_object_or_404(User, pk=request.POST['customer_id'])
-    vehicle = user.vehicle.get.all()[:1]
-  except:
-    vehicle = get_object_or_404(Vehicle, plate=request.POST['plate'])
+  if(request.GET['customer_id']):
+    user = get_object_or_404(User, pk=request.GET['customer_id'])
+    vehicle = user.vehicle_set.all()[0]
 
-  return listVehicleById(request, vehicle.id)
+  if(request.GET['plate']):
+    vehicle = get_object_or_404(Vehicle, plate=request.GET['plate'])
+
+  # return listVehicleById(request, vehicle.id) 
+  # return render(request, 'vehicles/listVehicle.html', args = vehicle.id )
+  return HttpResponseRedirect('list_vehicle/'+'1', vehicle.id)
 
 def listVehicle(request):
   vehicles = Vehicle.objects.all()

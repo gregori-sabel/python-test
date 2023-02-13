@@ -1,0 +1,23 @@
+
+<a href="{% url 'vehicles:index' %}">< HOME ></a>
+
+<br>
+<br>
+
+<div>
+  <strong>id:</strong>
+  <span>{{ vehicle.id }}</span>
+  <br>
+  <strong>Placa:</strong>
+  <span>{{ vehicle.plate }}</span>
+  <br>
+  <strong>Descrição:</strong>
+  <span>{{ vehicle.description }}</span>
+  <br>
+  <strong>Dono (id):</strong>
+  <span>{{ vehicle.customer.id }}</span>
+  <br>
+  <strong>Dono (nome):</strong>
+  <span>{{ vehicle.customer.name }}</span>
+</div>
+<br>
