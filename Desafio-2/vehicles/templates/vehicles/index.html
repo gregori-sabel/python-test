@@ -1,12 +1,5 @@
-{% comment %} {% if vehicles_all %}
-    <ul>
-    {% for v in vehicles_all %}
-        <li>{{ v.plate }}</li>
-      {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %} {% endcomment %}
+
+
 <script type="text/javascript"> 
   function post() {
 
@@ -34,6 +27,7 @@
 
 </div>
 <br>
+<hr>
 <div>
   🚗
   <a href="{% url 'vehicles:vehicleForm' %}">Criar Veículo</a>

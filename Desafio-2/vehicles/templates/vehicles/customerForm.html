@@ -1,4 +1,7 @@
 
+<a href="{% url 'vehicles:index' %}">< HOME ></a>
+<br>
+
 <form action="{% url 'vehicles:customerAdd' %}" method="post">
   {% csrf_token %}
   <fieldset>

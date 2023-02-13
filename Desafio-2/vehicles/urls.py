@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-# TODO as URL tem que ser /api/v1/customer_add
 
 app_name = 'vehicles'
 urlpatterns = [

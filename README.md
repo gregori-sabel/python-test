@@ -3,7 +3,7 @@
 Esse é um desafio em duas partes. O desafio, criado pela CloudPark, se propõe a avaliar o candidato à vaga de desenvolvedor.
 
 ## Desafio 1
-Para testar o desafio-1 pasta entrar na pasta e rodar(caso tenha python instalado 😉 ).
+Para testar o desafio-1 basta entrar na pasta e rodar(caso tenha python instalado 😉 ).
 
 ## Desafio 2
 Para rodar o desafio-2, entre na pasta e rode o comando: 

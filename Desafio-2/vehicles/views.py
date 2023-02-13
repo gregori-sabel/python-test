@@ -55,7 +55,7 @@ def customerAdd(request):
   user.save()
   # return render(request, 'vehicles/customerForm.html')
   # return HttpResponseRedirect(reverse('vehicles:customerForm'))
-  return request.status(200)
+  return render(request, 'vehicles/customerForm.html')
 
 def vehicleForm(request):
   # vehicles_all = Vehicle.objects.all()
