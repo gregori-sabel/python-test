@@ -1,4 +1,7 @@
 
+<a href="{% url 'vehicles:index' %}">< HOME ></a>
+
+
 <p>Todos veículos</p>
 <ul>
 {% for vehicle in vehicles %}
@@ -12,8 +15,11 @@
   <strong>Descrição:</strong>
   <span>{{ vehicle.description }}</span>
   <br>
-  <strong>Dono:</strong>
-  <span>{{ vehicle. }}</span>
+  <strong>Dono (id):</strong>
+  <span>{{ vehicle.customer.id }}</span>
+  <br>
+  <strong>Dono (nome):</strong>
+  <span>{{ vehicle.customer.name }}</span>
 </div>
 <br>
 {% endfor %}

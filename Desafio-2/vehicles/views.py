@@ -55,6 +55,11 @@ def listCustomer(request):
   context = {'users': users}
   return render(request, 'vehicles/listCustomer.html', context)
 
+# def searchCustomerById(request, customer_id):
+#   userId = get_object_or_404(User, id=customer_id)
+#   return render(request, 'vehicles/listCustomerById.html' userId, context)
+
+
 def listCustomerById(request, user_id):
   user = get_object_or_404(User, id=user_id)
   context = {'user': user}

@@ -7,26 +7,59 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %} {% endcomment %}
+<script type="text/javascript"> 
+  function post() {
+
+    const customer_id = document.getElementById('id').value ;
+
+    const form = document.createElement('form');
+    form.method = 'get';
+    form.action = 'list_customer/' + customer_id;  
+    document.body.appendChild(form);
+    form.submit();
+  }
+  
+</script>
+
 <div>
   👤
   <a href="{% url 'vehicles:customerForm' %}">Criar Usuário</a>
-  <a href="{% url 'vehicles:listCustomer' %}">Ver Usuário</a>
+  <a href="{% url 'vehicles:listCustomer' %}">Ver todos usuários</a>
+  <div>
+  {% comment %} <form action="{% url 'vehicles:searchCustomerById' %}" method="post"> {% endcomment %}
+    {% csrf_token %}
+      <span> Pesquisar por um usuário específico</span> <br>
+      <input id="id" placeholder="Digite o id" name="customer_id" required/>
+    <button onclick="post()" >Buscar</button> 
+  {% comment %} </form> {% endcomment %}
+  </div>
+
 </div>
 <div>
   🚗
   <a href="{% url 'vehicles:vehicleForm' %}">Criar Veículo</a>
-  <a href="{% url 'vehicles:listVehicle' %}">Ver Veículo</a>
+  <a href="{% url 'vehicles:listVehicle' %}">Ver todos veículo</a>
 </div>
 <style>
   div{
     padding: 20px 20px;
   }
+  
+  input{
+    margin-top: 5px;
+  }
 
-  a{
+  a, input, button{
     background-color: rgb(255, 133, 133);
     color: white;
     padding: 10px 20px;
+    border: none;
+    placeholder: black;
     border-radius: 10px;
+  }
+
+  ::placeholder {
+    color: black;
   }
 
 
