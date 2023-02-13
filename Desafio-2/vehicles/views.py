@@ -10,55 +10,34 @@ from .models import User, Vehicle
 from django.shortcuts import get_object_or_404
 
 
-from django.views import generic
-
-# class IndexView(generic.ListView):
-#   template_name = 'vehicles/index.html'
-#   context_object_name = 'latest_question_list'
-
-  # def get_queryset(self):
-  #   """Return the last five published questions."""
-  #   return Question.objects.order_by('-pub_date')[:5]
-
-# class DetailView(generic.DetailView):
-#   model = Vehicle
-#   template_name = 'vehicles/detail.html'
-
-# class ResultView(generic.DetailView):
-#   model = Vehicle
-#   template_name = 'vehicles/detail.html'
-
-# def detail(request, question_id):
-#     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, 'polls/detail.html', {'question': question})
-
 def index(request):
   vehicles_all = Vehicle.objects.all()
   context = {'vehicles_all': vehicles_all}
   return render(request, 'vehicles/index.html', context)
 
-# def detail(request, question_id):
-#   question = get_object_or_404(Question, pk=question_id)
-#   return render(request, 'vehicles/detail.html', {'question': question})
+def searchVehicle(request):
+  try:
+    user = get_object_or_404(User, pk=request.POST['customer_id'])
+    vehicle = user.vehicle.get.all()[:1]
+  except:
+    vehicle = get_object_or_404(Vehicle, plate=request.POST['plate'])
 
-# def results(request, question_id):
-#     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, 'vehicles/results.html', {'question': question})
+  return listVehicleById(request, vehicle.id)
 
 def listVehicle(request):
   vehicles = Vehicle.objects.all()
   context = {'vehicles': vehicles}
   return render(request, 'vehicles/listVehicle.html', context)
 
+def listVehicleById(request, vehicle_id):
+  vehicle = get_object_or_404(Vehicle, pk=vehicle_id)
+  context = {'vehicle': vehicle}
+  return render(request, 'vehicles/listVehicleById.html', context)
+
 def listCustomer(request):
   users = User.objects.all()
   context = {'users': users}
   return render(request, 'vehicles/listCustomer.html', context)
-
-# def searchCustomerById(request, customer_id):
-#   userId = get_object_or_404(User, id=customer_id)
-#   return render(request, 'vehicles/listCustomerById.html' userId, context)
-
 
 def listCustomerById(request, user_id):
   user = get_object_or_404(User, id=user_id)
@@ -98,22 +77,3 @@ def vehicleAdd(request):
   # return render(request, 'vehicles/customerForm.html')
   return HttpResponseRedirect(reverse('vehicles:vehicleForm'))
   # return request.status(200)
-
-
-
-# def vote(request, question_id):
-#   question = get_object_or_404(Question, pk=question_id)
-#   try:
-#     selected_choice = question.choice_set.get(pk=request.POST['choice'])
-#   except (KeyError, Choice.DoesNotExist):
-#     return render(request, 'vehicles/detail.html', {
-#       'question': question,
-#       'error_message': "You didn't select a choice."
-#     })
-#   else:
-#     selected_choice.votes += 1
-#     selected_choice.save()
-#     # Always return an HttpResponseRedirect after successfully dealing
-#     # with POST data. This prevents data from being posted twice if a
-#     # user hits the Back button.
-#     return HttpResponseRedirect(reverse('vehicles:results', args=(question.id,)))

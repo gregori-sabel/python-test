@@ -11,6 +11,8 @@ urlpatterns = [
     path('list_customer/<int:user_id>', views.listCustomerById, name='listCustomerById'),
         
     path('list_vehicle', views.listVehicle, name='listVehicle'),
+    path('list_vehicle/<int:vehicle_id>', views.listVehicleById, name='listVehicleById'),
+    path('search_vehicle', views.searchVehicle, name='searchVehicle'),
     
     path('customer_form', views.customerForm, name='customerForm'),
     path('api/v1/customer_add', views.customerAdd, name='customerAdd'),

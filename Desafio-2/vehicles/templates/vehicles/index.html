@@ -26,19 +26,33 @@
   <a href="{% url 'vehicles:customerForm' %}">Criar Usuário</a>
   <a href="{% url 'vehicles:listCustomer' %}">Ver todos usuários</a>
   <div>
-  {% comment %} <form action="{% url 'vehicles:searchCustomerById' %}" method="post"> {% endcomment %}
-    {% csrf_token %}
-      <span> Pesquisar por um usuário específico</span> <br>
-      <input id="id" placeholder="Digite o id" name="customer_id" required/>
+    <br>
+    <span> Pesquisar por um usuário específico</span> <br>
+    <input id="id" placeholder="Digite o id" name="customer_id" required/>
     <button onclick="post()" >Buscar</button> 
-  {% comment %} </form> {% endcomment %}
   </div>
 
 </div>
+<br>
 <div>
   🚗
   <a href="{% url 'vehicles:vehicleForm' %}">Criar Veículo</a>
   <a href="{% url 'vehicles:listVehicle' %}">Ver todos veículo</a>
+  <div>
+    <br>
+    <form action="{% url 'vehicles:searchVehicle' %}" method="GET">
+      {% comment %} {% csrf_token %} {% endcomment %}
+      <span> Pesquisar por um veículo específico</span> <br>
+
+        <input placeholder="Id do dono" name="customer_id"/>
+        ou
+        <input placeholder="Placa do carro" name="plate"/>
+    <br>
+      <input type="submit" >
+    </form>
+
+  </div>
+
 </div>
 <style>
   div{
@@ -48,6 +62,7 @@
   input{
     margin-top: 5px;
   }
+  
 
   a, input, button{
     background-color: rgb(255, 133, 133);
@@ -56,6 +71,7 @@
     border: none;
     placeholder: black;
     border-radius: 10px;
+    
   }
 
   ::placeholder {
