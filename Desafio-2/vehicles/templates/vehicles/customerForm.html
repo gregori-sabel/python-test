@@ -1,8 +1,13 @@
 
-<form action="{% url 'vehicles:vote' question.id %}" method="post">
+<form action="{% url 'vehicles:customerAdd' %}" method="post">
   {% csrf_token %}
   <fieldset>
-    <legend><h1>{{ question.question_text }}</h1></legend>
+
+    <input placeholder="id" name="pk"/>
+    <input placeholder="Nome" name="name"/>
+    <input placeholder="cpf" name="card_id"/>
+
+    {% comment %} <legend><h1>{{ question.question_text }}</h1></legend>
     {% if error_message %}
       <p><strong>{{ error_message }}</strong></p>
     {% endif %}
@@ -10,7 +15,7 @@
       <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
       <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
       <br>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
   </fieldset>
-  <input type="submit" value="Vote">
+  <input type="submit" >
 </form>

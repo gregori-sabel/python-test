@@ -1,0 +1,20 @@
+<strong>id:</strong>
+<span>{{ user.id }}</span>
+<br>
+<strong>name:</strong>
+<span>{{ user.name }}</span>
+<br>
+<strong>card id:</strong>
+<span>{{ card_id }}</span>
+
+<br>
+<br>
+
+<h3> vehicles </h3>
+<ul>
+{% for vehicle in user.vehicle_set.all %}
+    <li>{{ vehicle.id }} - {{ vehicle.plate }} </li>
+{% endfor %}
+</ul>
+
+{% comment %} <a href="{% url 'vehicles:detail' question.id %}">Vote again?</a> {% endcomment %}

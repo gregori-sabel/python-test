@@ -1,15 +1,35 @@
-{% if latest_question_list %}
+{% comment %} {% if vehicles_all %}
     <ul>
-    {% for question in latest_question_list %}
-        {% comment %} <li><a href="/vehicles/{{ question.id }}/">{{ question.question_text }}</a></li> {% endcomment %}
-        <li><a href="{% url 'vehicles:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% for v in vehicles_all %}
+        <li>{{ v.plate }}</li>
       {% endfor %}
     </ul>
 {% else %}
     <p>No polls are available.</p>
-{% endif %}
-
+{% endif %} {% endcomment %}
+<div>
+  👤
+  <a href="{% url 'vehicles:customerForm' %}">Criar Usuário</a>
+  <a href="{% url 'vehicles:listCustomer' %}">Ver Usuário</a>
+</div>
+<div>
+  🚗
+  <a href="{% url 'vehicles:vehicleForm' %}">Criar Veículo</a>
+  <a href="{% url 'vehicles:listVehicle' %}">Ver Veículo</a>
+</div>
 <style>
+  div{
+    padding: 20px 20px;
+  }
+
+  a{
+    background-color: rgb(255, 133, 133);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+
+
   ul{
     margin-top: 10px;
   }

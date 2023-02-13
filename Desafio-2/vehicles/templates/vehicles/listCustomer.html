@@ -1,0 +1,20 @@
+{% comment %} <h1>{{ user.name }}</h1> {% endcomment %}
+
+<p>Todos usuários</p>
+<ul>
+{% for user in users %}
+<div>
+  <strong>id:</strong>
+  <span>{{ user.id }}</span>
+  <br>
+  <strong>name:</strong>
+  <span>{{ user.name }}</span>
+  <br>
+  <strong>card id:</strong>
+  <span>{{ card_id }}</span>
+</div>
+<br>
+{% endfor %}
+</ul>
+
+{% comment %} <a href="{% url 'vehicles:detail' question.id %}">Vote again?</a> {% endcomment %}

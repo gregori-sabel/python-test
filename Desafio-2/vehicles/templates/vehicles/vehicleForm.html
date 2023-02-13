@@ -1,0 +1,23 @@
+
+<form action="{% url 'vehicles:vehicleAdd' %}" method="post">
+  {% csrf_token %}
+  <fieldset>
+
+    <input placeholder="id" name="pk"/>
+    <input placeholder="Plate" name="plate"/>
+    <input placeholder="Model" name="model"/>
+    <input placeholder="Description" name="description"/>
+    <input placeholder="Customer_id" name="customer_id" required/>
+
+    {% comment %} <legend><h1>{{ question.question_text }}</h1></legend>
+    {% if error_message %}
+      <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    {% for choice in question.choice_set.all %}
+      <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
+      <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+      <br>
+    {% endfor %} {% endcomment %}
+  </fieldset>
+  <input type="submit" >
+</form>

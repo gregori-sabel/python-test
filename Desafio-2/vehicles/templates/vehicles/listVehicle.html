@@ -1,0 +1,22 @@
+
+<p>Todos veículos</p>
+<ul>
+{% for vehicle in vehicles %}
+<div>
+  <strong>id:</strong>
+  <span>{{ vehicle.id }}</span>
+  <br>
+  <strong>Placa:</strong>
+  <span>{{ vehicle.plate }}</span>
+  <br>
+  <strong>Descrição:</strong>
+  <span>{{ vehicle.description }}</span>
+  <br>
+  <strong>Dono:</strong>
+  <span>{{ vehicle. }}</span>
+</div>
+<br>
+{% endfor %}
+</ul>
+
+{% comment %} <a href="{% url 'vehicles:detail' question.id %}">Vote again?</a> {% endcomment %}
