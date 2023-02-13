@@ -10,11 +10,11 @@ import time
 # 2 - [X] apresentar sucesso e informações salvas
 
 
-def write_json(data, filename="server.json"):
+def write_json(data, filename="config.json"):
   with open (filename, "w") as f:
     json.dump(data, f, indent=4)
 
-def get_json(filename="server.json"):
+def get_json(filename="config.json"):
   try:
     with open (filename) as json_file:
       data = json.load(json_file)
