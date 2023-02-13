@@ -2,6 +2,8 @@
 
 Esse é um desafio em duas partes. O desafio, criado pela CloudPark, se propõe a avaliar o candidato à vaga de desenvolvedor.
 
+Esse desafio foi a primeira vez que vejo as entranhas de um projeto Django. Foi um primeiro contato legal, gostei da tech.
+
 ## Desafio 1
 Para testar o desafio-1 basta entrar na pasta e rodar(caso tenha python instalado 😉 ).
 
